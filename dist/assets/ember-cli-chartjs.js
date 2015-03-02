@@ -318,23 +318,7 @@ define('ember-cli-chartjs/templates/index', ['exports', 'ember'], function (expo
     var buffer = '', helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 
-    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
-      'type': ("Line"),
-      'data': ("lineData"),
-      'width': (600),
-      'height': (200)
-    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
-    data.buffer.push("\n\n<ul>\n  <li>");
-    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-      'value': ("lineValue1"),
-      'type': ("number")
-    },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-    data.buffer.push("</li>\n  <li>");
-    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-      'value': ("lineValue2"),
-      'type': ("number")
-    },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-    data.buffer.push("</li>\n</ul>\n\n");
+    data.buffer.push("\n");
     data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
       'type': ("Pie"),
       'data': ("pieData"),
@@ -364,28 +348,7 @@ define('ember-cli-chartjs/templates/index', ['exports', 'ember'], function (expo
       'height': (200),
       'legend': (true)
     },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER",'legend': "BOOLEAN"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0,'legend': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
-    data.buffer.push("\n\n");
-    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
-      'type': ("Bar"),
-      'data': ("barData"),
-      'width': (600),
-      'height': (200)
-    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
-    data.buffer.push("\n\n");
-    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
-      'type': ("radar"),
-      'data': ("radarData"),
-      'width': (400),
-      'height': (400)
-    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
-    data.buffer.push("\n\n");
-    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
-      'type': ("polar area"),
-      'data': ("polarAreaData"),
-      'width': (400),
-      'height': (400)
-    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
-    data.buffer.push("\n\n");
+    data.buffer.push("\n\n\n");
     return buffer;
     
   });
@@ -533,7 +496,7 @@ catch(err) {
 if (runningTests) {
   require("ember-cli-chartjs/tests/test-helper");
 } else {
-  require("ember-cli-chartjs/app")["default"].create({"name":"ember-cli-chartjs","version":"0.0.0.fb371602"});
+  require("ember-cli-chartjs/app")["default"].create({"name":"ember-cli-chartjs","version":"0.0.0.6f943570"});
 }
 
 /* jshint ignore:end */
