@@ -125,7 +125,7 @@ define('ember-cli-chartjs/components/ember-zingchart', ['exports', 'ember', 'emb
 	exports['default'] = EmberZingChartComponent['default'];
 
 });
-define('ember-cli-chartjs/controllers/index', ['exports', 'ember'], function (exports, Ember) {
+define('ember-cli-chartjs/controllers/chart', ['exports', 'ember'], function (exports, Ember) {
 
   'use strict';
 
@@ -246,39 +246,6 @@ define('ember-cli-chartjs/controllers/index', ['exports', 'ember'], function (ex
   });
 
 });
-define('ember-cli-chartjs/controllers/person', ['exports', 'ember'], function (exports, Ember) {
-
-  'use strict';
-
-  exports['default'] = Ember['default'].ObjectController.extend({
-    selected: Ember['default'].computed("parentController.selectedPerson", function () {
-      return this.get("parentController.selectedPerson") === this.get("model");
-    }).readOnly()
-  });
-
-});
-define('ember-cli-chartjs/controllers/person/new', ['exports', 'ember'], function (exports, Ember) {
-
-  'use strict';
-
-  exports['default'] = Ember['default'].Controller.extend({
-    name: null,
-    hobby: null,
-    actions: {
-      createUser: function () {
-        this.store.createRecord("person", {
-          name: this.get("name"),
-          hobby: this.get("hobby") }).save();
-
-        this.setProperties({
-          name: null,
-          hobby: null
-        });
-      }
-    }
-  });
-
-});
 define('ember-cli-chartjs/initializers/app-version', ['exports', 'ember-cli-chartjs/config/environment', 'ember'], function (exports, config, Ember) {
 
   'use strict';
@@ -324,6 +291,21 @@ define('ember-cli-chartjs/models/person', ['exports', 'ember-data'], function (e
     hobby: DS['default'].attr("string")
   });
 
+  Person.reopenClass({
+    FIXTURES: [{
+      id: "1",
+      name: "Leslie",
+      hobby: "dancing"
+    }, {
+      id: "2",
+      name: "Nathan",
+      hobby: "clothes"
+    }, {
+      id: "3",
+      name: "Steven",
+      hobby: "biking"
+    }] });
+
 });
 define('ember-cli-chartjs/router', ['exports', 'ember', 'ember-cli-chartjs/config/environment'], function (exports, Ember, config) {
 
@@ -338,7 +320,7 @@ define('ember-cli-chartjs/router', ['exports', 'ember', 'ember-cli-chartjs/confi
   exports['default'] = Router;
 
 });
-define('ember-cli-chartjs/routes/index', ['exports', 'ember'], function (exports, Ember) {
+define('ember-cli-chartjs/routes/person', ['exports', 'ember'], function (exports, Ember) {
 
   'use strict';
 
@@ -394,24 +376,10 @@ define('ember-cli-chartjs/templates/index', ['exports', 'ember'], function (expo
   /**/) {
   this.compilerInfo = [4,'>= 1.0.0'];
   helpers = this.merge(helpers, Ember['default'].Handlebars.helpers); data = data || {};
-    var buffer = '', helper, options, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
+    var buffer = '', helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 
-    data.buffer.push("<form ");
-    data.buffer.push(escapeExpression(helpers.action.call(depth0, "createUser", {hash:{
-      'on': ("submit")
-    },hashTypes:{'on': "STRING"},hashContexts:{'on': depth0},contexts:[depth0],types:["STRING"],data:data})));
-    data.buffer.push(">\n  <div class=\"input\">\n    <label for=\"name\">name:</label>\n    ");
-    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-      'name': ("name"),
-      'value': ("name")
-    },hashTypes:{'name': "STRING",'value': "ID"},hashContexts:{'name': depth0,'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-    data.buffer.push("\n  </div>\n  <div class=\"input\">\n    <label for=\"hobby\">hobby:</label>\n    ");
-    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-      'name': ("hobby"),
-      'value': ("name")
-    },hashTypes:{'name': "STRING",'value': "ID"},hashContexts:{'name': depth0,'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-    data.buffer.push("\n  </div>\n  <div class=\"actions\">\n    <button type=\"submit\">add User</button>\n  </div>\n</form>\n\n\n\n\n<header>\n  <div class=\"row\">\n    <div class=\"small-12 medium-12 large-12 columns\">\n      <h2><a href=\"index.html\">People & Hobbies</a></h2>\n    </div>\n  </div>\n</header>\n\n<nav>\n  <div class=\"row\">\n    <div class=\"small-12 medium-12 large-12 columns\">\n      <ul>\n        <li><a href=\"index.html\" class=\"current\">Names</a>\n        </li>\n        <li><a href=\"about.html\">Hobbies</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n\n<div class=\"row\">\n  <div class=\"small-12 medium-6 large-6 columns\">\n    <h3>Names</h3>\n    <ul>\n      <li>");
+    data.buffer.push("<header>\n  <div class=\"row\">\n    <div class=\"small-12 medium-12 large-12 columns\">\n      <h2><a href=\"index.html\">People & Hobbies</a></h2>\n    </div>\n  </div>\n</header>\n\n<nav>\n  <div class=\"row\">\n    <div class=\"small-12 medium-12 large-12 columns\">\n      <ul>\n        <li><a href=\"index.html\" class=\"current\">Names</a>\n        </li>\n        <li><a href=\"about.html\">Hobbies</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n\n<div class=\"row\">\n  <div class=\"small-12 medium-6 large-6 columns\">\n    <h3>Names</h3>\n    <ul>\n      <li>");
     data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
       'value': ("pieValue1"),
       'type': ("number")
@@ -509,9 +477,20 @@ define('ember-cli-chartjs/templates/index', ['exports', 'ember'], function (expo
   });
 
 });
-define('ember-cli-chartjs/templates/person/new', function () {
+define('ember-cli-chartjs/templates/person', ['exports', 'ember'], function (exports, Ember) {
 
-	'use strict';
+  'use strict';
+
+  exports['default'] = Ember['default'].Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data
+  /**/) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+  helpers = this.merge(helpers, Ember['default'].Handlebars.helpers); data = data || {};
+    var buffer = '';
+
+
+    return buffer;
+    
+  });
 
 });
 define('ember-cli-chartjs/tests/app.jshint', function () {
@@ -534,33 +513,13 @@ define('ember-cli-chartjs/tests/components/ember-chart.jshint', function () {
   });
 
 });
-define('ember-cli-chartjs/tests/controllers/index.jshint', function () {
+define('ember-cli-chartjs/tests/controllers/chart.jshint', function () {
 
   'use strict';
 
   module('JSHint - controllers');
-  test('controllers/index.js should pass jshint', function() { 
-    ok(true, 'controllers/index.js should pass jshint.'); 
-  });
-
-});
-define('ember-cli-chartjs/tests/controllers/person.jshint', function () {
-
-  'use strict';
-
-  module('JSHint - controllers');
-  test('controllers/person.js should pass jshint', function() { 
-    ok(true, 'controllers/person.js should pass jshint.'); 
-  });
-
-});
-define('ember-cli-chartjs/tests/controllers/person/new.jshint', function () {
-
-  'use strict';
-
-  module('JSHint - controllers/person');
-  test('controllers/person/new.js should pass jshint', function() { 
-    ok(true, 'controllers/person/new.js should pass jshint.'); 
+  test('controllers/chart.js should pass jshint', function() { 
+    ok(true, 'controllers/chart.js should pass jshint.'); 
   });
 
 });
@@ -627,7 +586,7 @@ define('ember-cli-chartjs/tests/models/person.jshint', function () {
 
   module('JSHint - models');
   test('models/person.js should pass jshint', function() { 
-    ok(true, 'models/person.js should pass jshint.'); 
+    ok(false, 'models/person.js should pass jshint.\nmodels/person.js: line 8, col 1, \'Person\' is not defined.\n\n1 error'); 
   });
 
 });
@@ -641,13 +600,13 @@ define('ember-cli-chartjs/tests/router.jshint', function () {
   });
 
 });
-define('ember-cli-chartjs/tests/routes/index.jshint', function () {
+define('ember-cli-chartjs/tests/routes/person.jshint', function () {
 
   'use strict';
 
   module('JSHint - routes');
-  test('routes/index.js should pass jshint', function() { 
-    ok(true, 'routes/index.js should pass jshint.'); 
+  test('routes/person.js should pass jshint', function() { 
+    ok(true, 'routes/person.js should pass jshint.'); 
   });
 
 });
@@ -746,7 +705,7 @@ catch(err) {
 if (runningTests) {
   require("ember-cli-chartjs/tests/test-helper");
 } else {
-  require("ember-cli-chartjs/app")["default"].create({"LOG_ACTIVE_GENERATION":true,"LOG_VIEW_LOOKUPS":true,"name":"ember-cli-chartjs","version":"0.0.0.206e24f3"});
+  require("ember-cli-chartjs/app")["default"].create({"LOG_ACTIVE_GENERATION":true,"LOG_VIEW_LOOKUPS":true,"name":"ember-cli-chartjs","version":"0.0.0.59d6050f"});
 }
 
 /* jshint ignore:end */
