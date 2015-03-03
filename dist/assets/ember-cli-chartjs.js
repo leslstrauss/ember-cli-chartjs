@@ -2,6 +2,13 @@
 
 /* jshint ignore:end */
 
+define('ember-cli-chartjs/adapters/application', ['exports', 'ember-data'], function (exports, DS) {
+
+	'use strict';
+
+	exports['default'] = DS['default'].FixtureAdapter.extend();
+
+});
 define('ember-cli-chartjs/app', ['exports', 'ember', 'ember/resolver', 'ember/load-initializers', 'ember-cli-chartjs/config/environment'], function (exports, Ember, Resolver, loadInitializers, config) {
 
   'use strict';
@@ -293,10 +300,24 @@ define('ember-cli-chartjs/models/person', ['exports', 'ember-data'], function (e
 
   'use strict';
 
-  exports['default'] = DS['default'].Model.extend({
+  var Person = DS['default'].Model.extend({
     name: DS['default'].attr("string"),
     hobby: DS['default'].attr("string")
   });
+
+  Person.reopenClass({
+    FIXTURES: [{
+      id: "1",
+      name: "leslie",
+      hobby: "dancing"
+    }, {
+      id: "2",
+      name: "nathan",
+      hobby: "traveling"
+    }]
+  });
+
+  exports['default'] = Person;
 
 });
 define('ember-cli-chartjs/router', ['exports', 'ember', 'ember-cli-chartjs/config/environment'], function (exports, Ember, config) {
@@ -321,6 +342,28 @@ define('ember-cli-chartjs/routes/charts', ['exports', 'ember'], function (export
 	var ChartsRoute = Ember['default'].Route.extend({});
 
 	exports['default'] = ChartsRoute;
+
+});
+define('ember-cli-chartjs/routes/index', ['exports', 'ember'], function (exports, Ember) {
+
+  'use strict';
+
+  var IndexRoute = Ember['default'].Route.extend({
+    model: function () {
+      return this.store.findAll("person");
+    },
+
+    actions: {
+      creatPerson: function () {
+        this.stroe.createRecord("person", {
+          name: this.get("name"),
+          hobby: this.get("hobby")
+        }).save();
+      }
+    }
+  });
+
+  exports['default'] = IndexRoute;
 
 });
 define('ember-cli-chartjs/templates/application', ['exports', 'ember'], function (exports, Ember) {
@@ -604,6 +647,16 @@ define('ember-cli-chartjs/templates/index', ['exports', 'ember'], function (expo
   });
 
 });
+define('ember-cli-chartjs/tests/adapters/application.jshint', function () {
+
+  'use strict';
+
+  module('JSHint - adapters');
+  test('adapters/application.js should pass jshint', function() { 
+    ok(true, 'adapters/application.js should pass jshint.'); 
+  });
+
+});
 define('ember-cli-chartjs/tests/app.jshint', function () {
 
   'use strict';
@@ -731,6 +784,16 @@ define('ember-cli-chartjs/tests/routes/charts.jshint', function () {
   });
 
 });
+define('ember-cli-chartjs/tests/routes/index.jshint', function () {
+
+  'use strict';
+
+  module('JSHint - routes');
+  test('routes/index.js should pass jshint', function() { 
+    ok(true, 'routes/index.js should pass jshint.'); 
+  });
+
+});
 define('ember-cli-chartjs/tests/test-helper', ['ember-cli-chartjs/tests/helpers/resolver', 'ember-qunit'], function (resolver, ember_qunit) {
 
 	'use strict';
@@ -826,7 +889,7 @@ catch(err) {
 if (runningTests) {
   require("ember-cli-chartjs/tests/test-helper");
 } else {
-  require("ember-cli-chartjs/app")["default"].create({"LOG_ACTIVE_GENERATION":true,"LOG_VIEW_LOOKUPS":true,"name":"ember-cli-chartjs","version":"0.0.0.eacebb0c"});
+  require("ember-cli-chartjs/app")["default"].create({"LOG_ACTIVE_GENERATION":true,"LOG_VIEW_LOOKUPS":true,"name":"ember-cli-chartjs","version":"0.0.0.25a56f3b"});
 }
 
 /* jshint ignore:end */
