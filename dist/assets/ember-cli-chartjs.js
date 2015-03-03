@@ -246,6 +246,13 @@ define('ember-cli-chartjs/controllers/charts', ['exports', 'ember'], function (e
   });
 
 });
+define('ember-cli-chartjs/controllers/index', ['exports', 'ember'], function (exports, Ember) {
+
+	'use strict';
+
+	exports['default'] = Ember['default'].ArrayController.extend({});
+
+});
 define('ember-cli-chartjs/initializers/app-version', ['exports', 'ember-cli-chartjs/config/environment', 'ember'], function (exports, config, Ember) {
 
   'use strict';
@@ -280,6 +287,16 @@ define('ember-cli-chartjs/initializers/export-application-global', ['exports', '
 
     initialize: initialize
   };
+
+});
+define('ember-cli-chartjs/models/person', ['exports', 'ember-data'], function (exports, DS) {
+
+  'use strict';
+
+  exports['default'] = DS['default'].Model.extend({
+    name: DS['default'].attr("string"),
+    hobby: DS['default'].attr("string")
+  });
 
 });
 define('ember-cli-chartjs/router', ['exports', 'ember', 'ember-cli-chartjs/config/environment'], function (exports, Ember, config) {
@@ -460,8 +477,17 @@ define('ember-cli-chartjs/templates/index', ['exports', 'ember'], function (expo
   /**/) {
   this.compilerInfo = [4,'>= 1.0.0'];
   helpers = this.merge(helpers, Ember['default'].Handlebars.helpers); data = data || {};
-    var buffer = '', helper, options, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
+    var buffer = '', stack1, helper, options, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
 
+  function program1(depth0,data) {
+    
+    var buffer = '', stack1;
+    data.buffer.push("\n      <p>");
+    stack1 = helpers._triageMustache.call(depth0, "body", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+    if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+    data.buffer.push("</p>\n      <hr> ");
+    return buffer;
+    }
 
     data.buffer.push("<header>\n  <div class=\"row\">\n    <div class=\"small-12 medium-12 large-12 columns\">\n      <h2><a href=\"index.html\">People & Hobbies</a></h2>\n    </div>\n  </div>\n</header>\n\n<nav>\n  <div class=\"row\">\n    <div class=\"small-12 medium-12 large-12 columns\">\n      <ul>\n        <li><a href=\"index.html\" class=\"current\">Names</a>\n        </li>\n        <li><a href=\"about.html\">Hobbies</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n\n\n<div class=\"row\">\n  <div class=\"small-12 medium-12 large-12 columns\">\n    <form ");
     data.buffer.push(escapeExpression(helpers.action.call(depth0, "createPerson", {hash:{
@@ -477,7 +503,10 @@ define('ember-cli-chartjs/templates/index', ['exports', 'ember'], function (expo
       'name': ("hobby"),
       'value': ("hobby")
     },hashTypes:{'name': "STRING",'value': "ID"},hashContexts:{'name': depth0,'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-    data.buffer.push("\n        </div>\n      </div>\n      <div class=\"small-2 small-centered columns\">\n        <div class=\"actions\">\n          <button type=\"submit\">add User</button>\n        </div>\n      </div>\n    </form>\n  </div>\n</div>\n\n<div class=\"row\">\n  <div class=\"small-12 medium-6 large-6 columns\">\n    <h3>Names</h3>\n    <ul>\n      <li>");
+    data.buffer.push("\n        </div>\n      </div>\n      <div class=\"small-2 small-centered columns\">\n        <div class=\"actions\">\n          <button type=\"submit\">add User</button>\n        </div>\n      </div>\n    </form>\n  </div>\n</div>\n\n<div class=\"row\">\n  <div class=\"small-12 medium-10 large-8 small-centered columns\">\n    <ul>\n      ");
+    stack1 = helpers.each.call(depth0, {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data});
+    if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+    data.buffer.push("\n    </ul>\n  </div>\n</div>\n\n<div class=\"row\">\n  <div class=\"small-12 medium-6 large-6 columns\">\n    <h3>Names</h3>\n    <ul>\n      <li>");
     data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
       'value': ("pieValue1"),
       'type': ("number")
@@ -605,6 +634,16 @@ define('ember-cli-chartjs/tests/controllers/charts.jshint', function () {
   });
 
 });
+define('ember-cli-chartjs/tests/controllers/index.jshint', function () {
+
+  'use strict';
+
+  module('JSHint - controllers');
+  test('controllers/index.js should pass jshint', function() { 
+    ok(true, 'controllers/index.js should pass jshint.'); 
+  });
+
+});
 define('ember-cli-chartjs/tests/helpers/resolver', ['exports', 'ember/resolver', 'ember-cli-chartjs/config/environment'], function (exports, Resolver, config) {
 
   'use strict';
@@ -659,6 +698,16 @@ define('ember-cli-chartjs/tests/helpers/start-app.jshint', function () {
   module('JSHint - helpers');
   test('helpers/start-app.js should pass jshint', function() { 
     ok(true, 'helpers/start-app.js should pass jshint.'); 
+  });
+
+});
+define('ember-cli-chartjs/tests/models/person.jshint', function () {
+
+  'use strict';
+
+  module('JSHint - models');
+  test('models/person.js should pass jshint', function() { 
+    ok(true, 'models/person.js should pass jshint.'); 
   });
 
 });
