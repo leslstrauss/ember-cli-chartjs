@@ -1,0 +1,1 @@
+/Users/lesliestrauss/Code/ember-stuff/star/ember-cli-chartjs-lesl/tmp/custom_static_compiler-tmp_dest_dir-XHbKFl6y.tmp/ember-data/ember-data.prod.js

@@ -1,0 +1,1 @@
+/Users/lesliestrauss/Code/ember-stuff/star/ember-cli-chartjs-lesl/tmp/custom_static_compiler-tmp_dest_dir-sKNQ3q62.tmp/ember-qunit-notifications/README.md

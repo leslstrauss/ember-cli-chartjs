@@ -1,0 +1,1 @@
+/Users/lesliestrauss/Code/ember-stuff/star/ember-cli-chartjs-lesl/tmp/tree_merger-tmp_dest_dir-QU4mYYMI.tmp/ember-cli-chartjs/tests/components/ember-chart.jshint.js

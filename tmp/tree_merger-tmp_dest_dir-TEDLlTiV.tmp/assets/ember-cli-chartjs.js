@@ -1,0 +1,1 @@
+/Users/lesliestrauss/Code/ember-stuff/star/ember-cli-chartjs-lesl/tmp/class-tmp_cache_dir-5LOCITEA.tmp/assets/ember-cli-chartjs.js

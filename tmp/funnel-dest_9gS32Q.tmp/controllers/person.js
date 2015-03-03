@@ -1,0 +1,1 @@
+/Users/lesliestrauss/Code/ember-stuff/star/ember-cli-chartjs-lesl/app/controllers/person.js

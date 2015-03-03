@@ -1,0 +1,1 @@
+/Users/lesliestrauss/Code/ember-stuff/star/ember-cli-chartjs-lesl/tmp/jshinter-tmp_dest_dir-cznenRoI.tmp/helpers/start-app.jshint.js
