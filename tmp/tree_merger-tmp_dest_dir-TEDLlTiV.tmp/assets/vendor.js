@@ -1,1 +1,0 @@
-/Users/lesliestrauss/Code/ember-stuff/star/ember-cli-chartjs-lesl/tmp/class-tmp_cache_dir-ZukxU9pM.tmp/assets/vendor.js

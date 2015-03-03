@@ -1,1 +1,0 @@
-/Users/lesliestrauss/Code/ember-stuff/star/ember-cli-chartjs-lesl/tmp/six_to_five-tmp_dest_dir-sfYXOWM7.tmp/ember-cli-chartjs/tests/unit/controllers/person-test.js
