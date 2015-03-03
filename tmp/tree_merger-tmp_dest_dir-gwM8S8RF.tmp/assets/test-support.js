@@ -1,1 +1,0 @@
-/Users/lesliestrauss/Code/ember-stuff/star/ember-cli-chartjs-lesl/tmp/caching-writer-dest-dir_rpQ72a.tmp/assets/test-support.js

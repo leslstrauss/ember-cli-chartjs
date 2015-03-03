@@ -1,1 +1,0 @@
-/Users/lesliestrauss/Code/ember-stuff/star/ember-cli-chartjs-lesl/tmp/six_to_five-tmp_dest_dir-NU811HpW.tmp/ember-cli-chartjs/tests/test-helper.js
