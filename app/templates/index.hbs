@@ -19,7 +19,6 @@
   </div>
 </nav>
 
-
 <div class="row">
   <div class="small-12 medium-12 large-12 columns">
     <form {{action "createPerson" on="submit"}}>
@@ -37,7 +36,7 @@
       </div>
       <div class="small-2 small-centered columns">
         <div class="actions">
-          <button type="submit">add User</button>
+          <button type="submit">Submit</button>
         </div>
       </div>
     </form>
@@ -48,8 +47,10 @@
   <div class="small-12 medium-10 large-8 small-centered columns">
     <ul>
       {{#each}}
-      <p>{{body}}</p>
-      <hr> {{/each}}
+      <span class="name">{{name}}</span>
+      <span class="hobby">{{hobby}}</span>
+      <hr>
+      {{/each}}
     </ul>
   </div>
 </div>

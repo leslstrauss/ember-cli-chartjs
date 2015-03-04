@@ -6,6 +6,7 @@ var Person = DS.Model.extend({
 });
 
 Person.reopenClass({
+
   FIXTURES: [{
     id: "1",
     name: 'leslie',
@@ -18,3 +19,4 @@ Person.reopenClass({
 });
 
 export default Person;
+
