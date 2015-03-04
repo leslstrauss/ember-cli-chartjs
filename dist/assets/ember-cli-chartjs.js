@@ -135,49 +135,59 @@ define('ember-cli-chartjs/controllers/application', ['exports', 'ember'], functi
     pieData: (function () {
       return [{
         value: parseInt(this.get("pieValue1")),
-        color: "#F7464A",
-        highlight: "#FF5A5E",
+        color: "#3F7CAC",
+        highlight: "#3F7CAC",
         label: "Red"
       }, {
         value: parseInt(this.get("pieValue2")),
-        color: "#46BFBD",
-        highlight: "#5AD3D1",
+        color: "#6A5D7B",
+        highlight: "#6A5D7B",
         label: "Green"
       }, {
         value: parseInt(this.get("pieValue3")),
-        color: "#FDB45C",
-        highlight: "#FFC870",
+        color: "#597322",
+        highlight: "#597322",
         label: "Yellow"
       }];
     }).property("pieValue1", "pieValue2", "pieValue3"),
     lineValue1: 65,
     lineValue2: 59,
+    lineValue3: 13,
     lineData: (function () {
       return {
         labels: ["Soccer", "Dancing", "Art", "Reading", "Sleeping", "Fargo", "Picnic"],
         datasets: [{
           label: "My First dataset",
-          fillColor: "rgba(220,220,220,0.2)",
-          strokeColor: "rgba(220,220,220,1)",
+          fillColor: "rgba(151,187,205,0.2)",
+          strokeColor: "#6A5D7B",
           pointColor: "rgba(220,220,220,1)",
           pointStrokeColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(220,220,220,1)",
-          data: [parseInt(this.get("lineValue1")), parseInt(this.get("lineValue2")), 80, 81, 56, 55, 40]
+          data: [parseInt(this.get("lineValue1")), parseInt(this.get("lineValue2")), parseInt(this.get("lineValue3")), 80, 81, 56, 55, 40, 12, 90]
         }, {
           label: "My Second dataset",
-          fillColor: "rgba(151,187,205,0.2)",
-          strokeColor: "rgba(151,187,205,1)",
+          fillColor: "rgba(151,187,205,0.3)",
+          strokeColor: "#3F7CAC",
           pointColor: "rgba(151,187,205,1)",
           pointStrokeColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(151,187,205,1)",
           data: [28, 48, 40, 19, 86, 27, 90]
+        }, {
+          label: "My Third dataset",
+          fillColor: "rgba(151,187,205,0.4)",
+          strokeColor: "rgba(151,187,20,1)",
+          pointColor: "rgba(15,187,205,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(151,187,205,1)",
+          data: [38, 18, 60, 89, 12, 24, 64]
         }]
       };
-    }).property("lineValue1", "lineValue2"),
+    }).property("lineValue1", "lineValue2", "lineValue3"),
     barData: {
-      labels: ["Soccer", "Dancing", "Art", "Reading", "Sleeping", "Fargo", "Picnic"],
+      labels: ["January", "February", "March", "April", "May", "June", "July"],
       datasets: [{
         label: "My First dataset",
         fillColor: "rgba(220,220,220,0.5)",
@@ -218,13 +228,13 @@ define('ember-cli-chartjs/controllers/application', ['exports', 'ember'], functi
     },
     polarAreaData: [{
       value: 300,
-      color: "#F7464A",
-      highlight: "#FF5A5E",
+      color: "#3F7CAC",
+      highlight: "#3F7CAC",
       label: "Red"
     }, {
       value: 50,
-      color: "#46BFBD",
-      highlight: "#5AD3D1",
+      color: "#597322",
+      highlight: "#597322",
       label: "Green"
     }, {
       value: 100,
@@ -366,14 +376,14 @@ define('ember-cli-chartjs/templates/application', ['exports', 'ember'], function
     var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 
-    data.buffer.push("<header>\n  <div class=\"row\">\n    <div class=\"small-12 medium-12 large-12 columns\">\n      <h2><a href=\"index.html\">Peeps & Hobbies</a></h2>\n    </div>\n  </div>\n</header>\n<div class=\"section-headline\">\n  <div class=\"row\">\n    <div class=\"small-12 medium-12 large-12 large-centered columns\">\n      <h1></h1>\n      <h5></h5>\n    </div>\n  </div>\n</div>\n\n");
+    data.buffer.push("<header>\n  <div class=\"row\">\n    <div class=\"small-12 medium-12 large-12 columns\">\n      <h2><a href=\"index.html\">People & Hobbies</a></h2>\n    </div>\n  </div>\n</header>\n<div class=\"section-headline\">\n  <div class=\"row\">\n    <div class=\"small-12 medium-12 large-12 large-centered columns\">\n      <h1></h1>\n      <h5></h5>\n    </div>\n  </div>\n</div>\n\n");
     stack1 = helpers._triageMustache.call(depth0, "outlet", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
     if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
     data.buffer.push("\n\n<div class=\"section-features-pricing section-bg-color1 \">\n  <div class=\"row\">\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <div class=\"feature-box\">\n        <h4>Line Chart</h4> ");
     data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
       'type': ("Line"),
       'data': ("lineData"),
-      'width': (300),
+      'width': (500),
       'height': (300)
     },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
     data.buffer.push("\n        <ul>\n          <li>");
@@ -388,7 +398,7 @@ define('ember-cli-chartjs/templates/application', ['exports', 'ember'], function
     },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
     data.buffer.push("</li>\n          <li>");
     data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-      'value': ("lineValue2"),
+      'value': ("lineValue3"),
       'type': ("number")
     },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
     data.buffer.push("</li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <div class=\"feature-box\">\n        <h4>Pie Chart</h4> ");
@@ -735,7 +745,7 @@ catch(err) {
 if (runningTests) {
   require("ember-cli-chartjs/tests/test-helper");
 } else {
-  require("ember-cli-chartjs/app")["default"].create({"LOG_ACTIVE_GENERATION":true,"LOG_VIEW_LOOKUPS":true,"name":"ember-cli-chartjs","version":"0.0.0.c187243c"});
+  require("ember-cli-chartjs/app")["default"].create({"LOG_ACTIVE_GENERATION":true,"LOG_VIEW_LOOKUPS":true,"name":"ember-cli-chartjs","version":"0.0.0.07963219"});
 }
 
 /* jshint ignore:end */
