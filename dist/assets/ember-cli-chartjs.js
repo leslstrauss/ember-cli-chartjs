@@ -376,14 +376,44 @@ define('ember-cli-chartjs/templates/application', ['exports', 'ember'], function
       'width': (300),
       'height': (300)
     },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
-    data.buffer.push("\n      </div>\n    </div>\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <div class=\"feature-box\">\n        <h4>Pie Chart</h4> ");
+    data.buffer.push("\n        <ul>\n          <li>");
+    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+      'value': ("lineValue1"),
+      'type': ("number")
+    },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+    data.buffer.push("</li>\n          <li>");
+    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+      'value': ("lineValue2"),
+      'type': ("number")
+    },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+    data.buffer.push("</li>\n          <li>");
+    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+      'value': ("lineValue2"),
+      'type': ("number")
+    },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+    data.buffer.push("</li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <div class=\"feature-box\">\n        <h4>Pie Chart</h4> ");
     data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
       'type': ("Pie"),
       'data': ("pieData"),
       'width': (300),
       'height': (300)
     },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
-    data.buffer.push("\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <div class=\"feature-box\">\n        <h3>Donut Chart</h3> ");
+    data.buffer.push("\n        <ul>\n          <li>");
+    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+      'value': ("pieValue1"),
+      'type': ("number")
+    },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+    data.buffer.push("</li>\n          <li>");
+    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+      'value': ("pieValue2"),
+      'type': ("number")
+    },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+    data.buffer.push("</li>\n          <li>");
+    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+      'value': ("pieValue3"),
+      'type': ("number")
+    },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+    data.buffer.push("</li>\n        </ul>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <div class=\"feature-box\">\n        <h3>Donut Chart</h3> ");
     data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
       'type': ("Doughnut"),
       'data': ("pieData"),

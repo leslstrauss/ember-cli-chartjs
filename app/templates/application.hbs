@@ -21,11 +21,21 @@
     <div class="small-12 medium-6 large-6 columns">
       <div class="feature-box">
         <h4>Line Chart</h4> {{ember-chart type='Line' data=lineData width=300 height=300}}
+        <ul>
+          <li>{{input value=lineValue1 type="number"}}</li>
+          <li>{{input value=lineValue2 type="number"}}</li>
+          <li>{{input value=lineValue2 type="number"}}</li>
+        </ul>
       </div>
     </div>
     <div class="small-12 medium-6 large-6 columns">
       <div class="feature-box">
         <h4>Pie Chart</h4> {{ember-chart type='Pie' data=pieData width=300 height=300}}
+        <ul>
+          <li>{{input value=pieValue1 type="number"}}</li>
+          <li>{{input value=pieValue2 type="number"}}</li>
+          <li>{{input value=pieValue3 type="number"}}</li>
+        </ul>
       </div>
     </div>
   </div>
