@@ -16,7 +16,7 @@ export default Ember.Component.extend({
     if (this.get('legend')) {
       var legend = chart.generateLegend();
       this.$().parent().append(legend);
-    };
+    }
 
     this.set('chart', chart);
   }.on('didInsertElement'),
@@ -24,7 +24,7 @@ export default Ember.Component.extend({
   destroyChart: function () {
     if (this.get('legend')) {
       this.$().parent().children('[class$=legend]').remove();
-    };
+    }
 
     this.get('chart').destroy();
   }.on('willDestroyElement'),
@@ -48,11 +48,11 @@ export default Ember.Component.extend({
 
   updateChartBasedOnType: function (data, chart) {
     if (data.datasets) {
-      return this.updateLinearCharts(data.datasets, chart)
-    };
+      return this.updateLinearCharts(data.datasets, chart);
+    }
     if (Array.isArray(data)) {
-      return this.updatePieCharts(data, chart)
-    };
+      return this.updatePieCharts(data, chart);
+    }
   },
 
   updateLinearCharts: function (datasets, chart) {
@@ -79,8 +79,8 @@ export default Ember.Component.extend({
     var needUpdate = false;
     data.forEach(function (segment, i) {
       if (typeof chart.segments[i] !== 'undefined') {
-        segment.value = segment.value || 0
-        if (chart.segments[i].value != segment.value) {
+        segment.value = segment.value || 0;
+        if (chart.segments[i].value !== segment.value) {
           chart.segments[i].value = segment.value;
           needUpdate = true;
         }

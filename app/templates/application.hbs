@@ -20,25 +20,12 @@
   <div class="row">
     <div class="small-12 medium-6 large-6 columns">
       <div class="feature-box">
-        <h4>Line Chart</h4> {{ember-chart type='Line' data=lineData width=600 height=200}}
+        <h4>Line Chart</h4> {{ember-chart type='Line' data=lineData width=300 height=300}}
       </div>
     </div>
     <div class="small-12 medium-6 large-6 columns">
       <div class="feature-box">
-        <h4>Pie Chart</h4> {{ember-chart type='Pie' data=lineData width=200 height=200}}
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="small-12 medium-6 large-6 columns">
-      <div class="feature-box">
-        <h3>Donut Chart</h3> {{ember-chart type='Doughnut' data=pieData width=200 height=200 legend=true }}
-      </div>
-    </div>
-    <div class="small-12 medium-6 large-6 columns">
-      <div class="feature-box">
-        <h3>Bar Chart</h3> {{ember-chart type='Bar' data=barData width=200 height=200}}
+        <h4>Pie Chart</h4> {{ember-chart type='Pie' data=pieData width=300 height=300}}
       </div>
     </div>
   </div>
@@ -46,12 +33,25 @@
   <div class="row">
     <div class="small-12 medium-6 large-6 columns">
       <div class="feature-box">
-        <h3>Radar Chart</h3> {{ember-chart type='radar' data=radarData width=200 height=200}}
+        <h3>Donut Chart</h3> {{ember-chart type='Doughnut' data=pieData width=300 height=300}}
       </div>
     </div>
     <div class="small-12 medium-6 large-6 columns">
       <div class="feature-box">
-        <h3>Polar Area Chart</h3> {{ember-chart type='polar area' data=radarData width=200 height=200}}
+        <h3>Bar Chart</h3> {{ember-chart type='Bar' data=barData width=300 height=300}}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 large-6 columns">
+      <div class="feature-box">
+        <h3>Radar Chart</h3> {{ember-chart type='radar' data=radarData width=300 height=300}}
+      </div>
+    </div>
+    <div class="small-12 medium-6 large-6 columns">
+      <div class="feature-box">
+        <h3>Polar Area Chart</h3> {{ember-chart type='polar area' data=polarAreaData width=300 height=300}}
       </div>
     </div>
   </div>

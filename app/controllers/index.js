@@ -5,7 +5,7 @@ export default Ember.ArrayController.extend({
   score: null,
   actions: {
     createPerson: function () {
-      var name = this.store.createRecord('person', {
+      this.store.createRecord('person', {
         name: this.get('name'),
         hobby: this.get('hobby')
       }).save();
