@@ -1,1 +1,69 @@
+<header>
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+      <h2><a href="index.html">Peeps & Hobbies</a></h2>
+    </div>
+  </div>
+</header>
+<div class="section-headline">
+  <div class="row">
+    <div class="small-12 medium-12 large-12 large-centered columns">
+      <h1></h1>
+      <h5></h5>
+    </div>
+  </div>
+</div>
+
 {{outlet}}
+
+<div class="section-features-pricing section-bg-color1 ">
+  <div class="row">
+    <div class="small-12 medium-6 large-6 columns">
+      <div class="feature-box">
+        <h4>Line Chart</h4> {{ember-chart type='Line' data=lineData width=600 height=200}}
+      </div>
+    </div>
+    <div class="small-12 medium-6 large-6 columns">
+      <div class="feature-box">
+        <h4>Pie Chart</h4> {{ember-chart type='Pie' data=lineData width=200 height=200}}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 large-6 columns">
+      <div class="feature-box">
+        <h3>Donut Chart</h3> {{ember-chart type='Doughnut' data=pieData width=200 height=200 legend=true }}
+      </div>
+    </div>
+    <div class="small-12 medium-6 large-6 columns">
+      <div class="feature-box">
+        <h3>Bar Chart</h3> {{ember-chart type='Bar' data=barData width=200 height=200}}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 large-6 columns">
+      <div class="feature-box">
+        <h3>Radar Chart</h3> {{ember-chart type='radar' data=radarData width=200 height=200}}
+      </div>
+    </div>
+    <div class="small-12 medium-6 large-6 columns">
+      <div class="feature-box">
+        <h3>Polar Area Chart</h3> {{ember-chart type='polar area' data=radarData width=200 height=200}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="section-bg-color2">
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+      <ul>
+        <li>&copy; 2015 Leslie Strauss.</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+

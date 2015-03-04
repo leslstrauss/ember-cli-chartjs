@@ -2,11 +2,10 @@ import Ember from 'ember';
 /* global Chart */
 
 export default Ember.Component.extend({
-  responsive: true,
   tagName: 'canvas',
   attributeBindings: ['width', 'height'],
 
-  renderChart: function() {
+  renderChart: function () {
     var context = this.get('element').getContext('2d');
     var data = this.get('data');
     var type = this.get('type').classify();
@@ -17,20 +16,20 @@ export default Ember.Component.extend({
     if (this.get('legend')) {
       var legend = chart.generateLegend();
       this.$().parent().append(legend);
-    }
+    };
 
     this.set('chart', chart);
   }.on('didInsertElement'),
 
-  destroyChart: function() {
+  destroyChart: function () {
     if (this.get('legend')) {
       this.$().parent().children('[class$=legend]').remove();
-    }
+    };
 
     this.get('chart').destroy();
   }.on('willDestroyElement'),
 
-  updateChart: function() {
+  updateChart: function () {
     try {
       var chart = this.get('chart');
       var data = this.get('data');
@@ -47,18 +46,18 @@ export default Ember.Component.extend({
     }
   }.observes('data', 'data.[]', 'options'),
 
-  updateChartBasedOnType: function(data, chart) {
+  updateChartBasedOnType: function (data, chart) {
     if (data.datasets) {
-      return this.updateLinearCharts(data.datasets, chart);
-    }
+      return this.updateLinearCharts(data.datasets, chart)
+    };
     if (Array.isArray(data)) {
-      return this.updatePieCharts(data, chart);
-    }
+      return this.updatePieCharts(data, chart)
+    };
   },
 
-  updateLinearCharts: function(datasets, chart) {
-    datasets.forEach(function(dataset, i) {
-      dataset.data.forEach(function(item, j) {
+  updateLinearCharts: function (datasets, chart) {
+    datasets.forEach(function (dataset, i) {
+      dataset.data.forEach(function (item, j) {
         item = item || 0;
         if (typeof chart.datasets[i] === 'undefined') {
           chart.segments[j].value = item;
@@ -76,12 +75,12 @@ export default Ember.Component.extend({
     return true;
   },
 
-  updatePieCharts: function(data, chart) {
+  updatePieCharts: function (data, chart) {
     var needUpdate = false;
-    data.forEach(function(segment, i) {
+    data.forEach(function (segment, i) {
       if (typeof chart.segments[i] !== 'undefined') {
-        segment.value = segment.value || 0;
-        if (chart.segments[i].value !== segment.value) {
+        segment.value = segment.value || 0
+        if (chart.segments[i].value != segment.value) {
           chart.segments[i].value = segment.value;
           needUpdate = true;
         }
@@ -94,3 +93,4 @@ export default Ember.Component.extend({
     return needUpdate;
   }
 });
+

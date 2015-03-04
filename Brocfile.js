@@ -18,6 +18,5 @@ var app = new EmberApp();
 // along with the exports of each module as its value.
 
 app.import('bower_components/Chart.js/Chart.js');
-// app.import('bower_components/zingchart/zingchart.min.js');
 
 module.exports = app.toTree();

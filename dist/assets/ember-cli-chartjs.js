@@ -31,7 +31,6 @@ define('ember-cli-chartjs/components/ember-chart', ['exports', 'ember'], functio
   'use strict';
 
   exports['default'] = Ember['default'].Component.extend({
-    responsive: true,
     tagName: "canvas",
     attributeBindings: ["width", "height"],
 
@@ -46,7 +45,7 @@ define('ember-cli-chartjs/components/ember-chart', ['exports', 'ember'], functio
       if (this.get("legend")) {
         var legend = chart.generateLegend();
         this.$().parent().append(legend);
-      }
+      };
 
       this.set("chart", chart);
     }).on("didInsertElement"),
@@ -54,7 +53,7 @@ define('ember-cli-chartjs/components/ember-chart', ['exports', 'ember'], functio
     destroyChart: (function () {
       if (this.get("legend")) {
         this.$().parent().children("[class$=legend]").remove();
-      }
+      };
 
       this.get("chart").destroy();
     }).on("willDestroyElement"),
@@ -79,10 +78,10 @@ define('ember-cli-chartjs/components/ember-chart', ['exports', 'ember'], functio
     updateChartBasedOnType: function (data, chart) {
       if (data.datasets) {
         return this.updateLinearCharts(data.datasets, chart);
-      }
+      };
       if (Array.isArray(data)) {
         return this.updatePieCharts(data, chart);
-      }
+      };
     },
 
     updateLinearCharts: function (datasets, chart) {
@@ -110,7 +109,7 @@ define('ember-cli-chartjs/components/ember-chart', ['exports', 'ember'], functio
       data.forEach(function (segment, i) {
         if (typeof chart.segments[i] !== "undefined") {
           segment.value = segment.value || 0;
-          if (chart.segments[i].value !== segment.value) {
+          if (chart.segments[i].value != segment.value) {
             chart.segments[i].value = segment.value;
             needUpdate = true;
           }
@@ -125,14 +124,7 @@ define('ember-cli-chartjs/components/ember-chart', ['exports', 'ember'], functio
   });
 
 });
-define('ember-cli-chartjs/components/ember-zingchart', ['exports', 'ember', 'ember-zingchart/components/ember-zingchart'], function (exports, Ember, EmberZingChartComponent) {
-
-	'use strict';
-
-	exports['default'] = EmberZingChartComponent['default'];
-
-});
-define('ember-cli-chartjs/controllers/charts', ['exports', 'ember'], function (exports, Ember) {
+define('ember-cli-chartjs/controllers/application', ['exports', 'ember'], function (exports, Ember) {
 
   'use strict';
 
@@ -371,31 +363,57 @@ define('ember-cli-chartjs/templates/application', ['exports', 'ember'], function
   /**/) {
   this.compilerInfo = [4,'>= 1.0.0'];
   helpers = this.merge(helpers, Ember['default'].Handlebars.helpers); data = data || {};
-    var buffer = '', stack1;
+    var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 
+    data.buffer.push("<header>\n  <div class=\"row\">\n    <div class=\"small-12 medium-12 large-12 columns\">\n      <h2><a href=\"index.html\">Peeps & Hobbies</a></h2>\n    </div>\n  </div>\n</header>\n<div class=\"section-headline\">\n  <div class=\"row\">\n    <div class=\"small-12 medium-12 large-12 large-centered columns\">\n      <h1></h1>\n      <h5></h5>\n    </div>\n  </div>\n</div>\n\n");
     stack1 = helpers._triageMustache.call(depth0, "outlet", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
     if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-    data.buffer.push("\n");
+    data.buffer.push("\n\n<div class=\"section-features-pricing section-bg-color1 \">\n  <div class=\"row\">\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <div class=\"feature-box\">\n        <h4>Line Chart</h4> ");
+    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
+      'type': ("Line"),
+      'data': ("lineData"),
+      'width': (600),
+      'height': (200)
+    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
+    data.buffer.push("\n      </div>\n    </div>\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <div class=\"feature-box\">\n        <h4>Pie Chart</h4> ");
+    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
+      'type': ("Pie"),
+      'data': ("lineData"),
+      'width': (200),
+      'height': (200)
+    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
+    data.buffer.push("\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <div class=\"feature-box\">\n        <h3>Donut Chart</h3> ");
+    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
+      'type': ("Doughnut"),
+      'data': ("pieData"),
+      'width': (200),
+      'height': (200),
+      'legend': (true)
+    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER",'legend': "BOOLEAN"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0,'legend': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
+    data.buffer.push("\n      </div>\n    </div>\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <div class=\"feature-box\">\n        <h3>Bar Chart</h3> ");
+    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
+      'type': ("Bar"),
+      'data': ("barData"),
+      'width': (200),
+      'height': (200)
+    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
+    data.buffer.push("\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <div class=\"feature-box\">\n        <h3>Radar Chart</h3> ");
+    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
+      'type': ("radar"),
+      'data': ("radarData"),
+      'width': (200),
+      'height': (200)
+    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
+    data.buffer.push("\n      </div>\n    </div>\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <div class=\"feature-box\">\n        <h3>Polar Area Chart</h3> ");
+    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
+      'type': ("polar area"),
+      'data': ("radarData"),
+      'width': (200),
+      'height': (200)
+    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
+    data.buffer.push("\n      </div>\n    </div>\n  </div>\n</div>\n\n<footer class=\"section-bg-color2\">\n  <div class=\"row\">\n    <div class=\"small-12 medium-12 large-12 columns\">\n      <ul>\n        <li>&copy; 2015 Leslie Strauss.</li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n");
     return buffer;
-    
-  });
-
-});
-define('ember-cli-chartjs/templates/components/ember-zingchart', ['exports', 'ember'], function (exports, Ember) {
-
-  'use strict';
-
-  exports['default'] = Ember['default'].Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data
-  /**/) {
-  this.compilerInfo = [4,'>= 1.0.0'];
-  helpers = this.merge(helpers, Ember['default'].Handlebars.helpers); data = data || {};
-    var stack1;
-
-
-    stack1 = helpers._triageMustache.call(depth0, "yield", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-    if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-    else { data.buffer.push(''); }
     
   });
 
@@ -413,17 +431,24 @@ define('ember-cli-chartjs/templates/index', ['exports', 'ember'], function (expo
   function program1(depth0,data) {
     
     var buffer = '', stack1;
-    data.buffer.push("\n      <span class=\"name\">");
+    data.buffer.push("\n        <span class=\"name\">");
     stack1 = helpers._triageMustache.call(depth0, "name", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
     if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-    data.buffer.push("</span>\n      <span class=\"hobby\">");
-    stack1 = helpers._triageMustache.call(depth0, "hobby", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-    if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-    data.buffer.push("</span>\n      <hr>\n      ");
+    data.buffer.push("</span>\n        <hr>\n      ");
     return buffer;
     }
 
-    data.buffer.push("<header>\n  <div class=\"row\">\n    <div class=\"small-12 medium-12 large-12 columns\">\n      <h2><a href=\"index.html\">People & Hobbies</a></h2>\n    </div>\n  </div>\n</header>\n\n<nav>\n  <div class=\"row\">\n    <div class=\"small-12 medium-12 large-12 columns\">\n      <ul>\n        <li><a href=\"index.html\" class=\"current\">Names</a>\n        </li>\n        <li><a href=\"about.html\">Hobbies</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n\n<div class=\"row\">\n  <div class=\"small-12 medium-12 large-12 columns\">\n    <form ");
+  function program3(depth0,data) {
+    
+    var buffer = '', stack1;
+    data.buffer.push("\n        <span class=\"hobby\">");
+    stack1 = helpers._triageMustache.call(depth0, "hobby", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+    if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+    data.buffer.push("</span>\n        <hr>\n      ");
+    return buffer;
+    }
+
+    data.buffer.push("<div class=\"row\">\n  <div class=\"small-12 medium-12 large-12 columns\">\n    <form ");
     data.buffer.push(escapeExpression(helpers.action.call(depth0, "createPerson", {hash:{
       'on': ("submit")
     },hashTypes:{'on': "STRING"},hashContexts:{'on': depth0},contexts:[depth0],types:["STRING"],data:data})));
@@ -437,102 +462,13 @@ define('ember-cli-chartjs/templates/index', ['exports', 'ember'], function (expo
       'name': ("hobby"),
       'value': ("hobby")
     },hashTypes:{'name': "STRING",'value': "ID"},hashContexts:{'name': depth0,'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-    data.buffer.push("\n        </div>\n      </div>\n      <div class=\"small-2 small-centered columns\">\n        <div class=\"actions\">\n          <button type=\"submit\">Submit</button>\n        </div>\n      </div>\n    </form>\n  </div>\n</div>\n\n<div class=\"row\">\n  <div class=\"small-12 medium-10 large-8 small-centered columns\">\n    <ul>\n      ");
+    data.buffer.push("\n        </div>\n      </div>\n      <div class=\"small-6 medium-6 large-6 columns\">\n        <div class=\"actions\">\n          <button type=\"submit\">Submit</button>\n        </div>\n      </div>\n      <div class=\"small-6 medium-6 large-6 columns\">\n        <div class=\"actions\">\n          <button type=\"submit\">Submit</button>\n        </div>\n      </div>\n    </form>\n  </div>\n</div>\n\n<br>\n<br>\n\n<div class=\"row\">\n  <div class=\"small-12 medium-6 large-6 columns\">\n    <ul>\n      ");
     stack1 = helpers.each.call(depth0, {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data});
     if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-    data.buffer.push("\n    </ul>\n  </div>\n</div>\n\n<div class=\"row\">\n  <div class=\"small-12 medium-6 large-6 columns\">\n    <h3>Names</h3>\n    <ul>\n      <li>");
-    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-      'value': ("pieValue1"),
-      'type': ("number")
-    },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-    data.buffer.push("</li>\n      <li>");
-    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-      'value': ("pieValue2"),
-      'type': ("number")
-    },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-    data.buffer.push("</li>\n      <li>");
-    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-      'value': ("pieValue3"),
-      'type': ("number")
-    },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-    data.buffer.push("</li>\n    </ul>\n  </div>\n  <div class=\"small-12 medium-6 large-6 columns\">\n    <h3>Hobbies</h3>\n  </div>\n</div>\n\n<div class=\"section-features-pricing section-bg-color1 \">\n   \n\n  <div class=\"row\">\n    <div class=\"small-12 medium-10 large-10 columns\">\n      <div class=\"feature-box\">\n        <h4>Line Chart</h4> ");
-    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
-      'type': ("Line"),
-      'data': ("lineData"),
-      'width': (600),
-      'height': (200)
-    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
-    data.buffer.push("\n        <ul>\n          <li>");
-    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-      'value': ("lineValue1"),
-      'type': ("number")
-    },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-    data.buffer.push("</li>\n          <li>");
-    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-      'value': ("lineValue2"),
-      'type': ("number")
-    },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-    data.buffer.push("</li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"small-12 medium-4 large-4 columns\">\n      <div class=\"feature-box\">\n        <h4><i class=\"fa fa-laptop fa-lg fa-fw\"></i> Feature Two</h4>\n        <p>Donec congue sapien sed dui accum san, vel ultri cies purus tempor. Aenean egestas rhoncus ornare tempor.</p>\n      </div>\n    </div>\n    <div class=\"small-12 medium-4 large-4 columns\">\n      <div class=\"feature-box\">\n        <h4><i class=\"fa fa-plus-square fa-lg fa-fw\"></i> Feature Three</h4>\n        <p>Donec congue sapien sed dui accum san, vel ultri cies purus tempor. Aenean egestas rhoncus ornare tempor.</p>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"small-12 medium-4 large-4 columns\">\n      <div class=\"feature-box\">\n        <h4><i class=\"fa fa-bolt fa-lg fa-fw\"></i> Feature Four</h4>\n        <p>Donec congue sapien sed dui accum san, vel ultri cies purus tempor. Aenean egestas rhoncus ornare tempor.</p>\n      </div>\n    </div>\n    <div class=\"small-12 medium-4 large-4 columns\">\n      <div class=\"feature-box\">\n        <h4><i class=\"fa fa-certificate fa-lg fa-fw\"></i> Feature Five</h4>\n        <p>Donec congue sapien sed dui accum san, vel ultri cies purus tempor. Aenean egestas rhoncus ornare tempor.</p>\n      </div>\n    </div>\n    <div class=\"small-12 medium-4 large-4 columns\">\n      <div class=\"feature-box\">\n        <h4><i class=\"fa fa-terminal fa-lg fa-fw\"></i> Feature Six</h4>\n        <p>Donec congue sapien sed dui accum san, vel ultri cies purus tempor. Aenean egestas rhoncus ornare tempor.</p>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"small-12 medium-4 large-4 columns\">\n      <div class=\"feature-box pricing\">\n        <h4>Pricing Table 1</h4>\n        <ul>\n          <li>Lorem ipsum dolor sit amet</li>\n          <li>Sed interdum tincidunt nibh</li>\n          <li>Et vehicula metus malesuada eget</li>\n        </ul>\n        <a href=\"#\" class=\"button round\">Buy Now</a>\n      </div>\n    </div>\n    <div class=\"small-12 medium-4 large-4 columns\">\n      <div class=\"feature-box pricing\">\n        <h4>Pricing Table 2</h4>\n        <ul>\n          <li>Lorem ipsum dolor sit amet</li>\n          <li>Sed interdum tincidunt nibh</li>\n          <li>Et vehicula metus malesuada eget</li>\n        </ul>\n        <a href=\"#\" class=\"button round\">Buy Now</a>\n      </div>\n    </div>\n    <div class=\"small-12 medium-4 large-4 columns\">\n      <div class=\"feature-box pricing\">\n        <h4>Pricing Table 3</h4>\n        <ul>\n          <li>Lorem ipsum dolor sit amet</li>\n          <li>Sed interdum tincidunt nibh</li>\n          <li>Et vehicula metus malesuada eget</li>\n        </ul>\n        <a href=\"#\" class=\"button round\">Buy Now</a>\n      </div>\n    </div>\n    <p class=\"pricing-footer p-small\"><em>Lorem ipsum dolor sit amet consectetur adipiscing elit posuere magna neque</em>\n    </p>\n  </div>\n</div>\n<div class=\"section-features-pricing section-bg-color1 \">\n  <div class=\"row\">\n    <div class=\"small-12 medium-4 large-4 columns\">\n      <div class=\"feature-box\">\n        <h3>Pie Chart</h3> ");
-    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
-      'type': ("Pie"),
-      'data': ("pieData"),
-      'width': (200),
-      'height': (200)
-    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
-    data.buffer.push("\n      </div>\n    </div>\n    <div class=\"small-12 medium-4 large-4 columns\">\n      <div class=\"feature-box\">\n        <h3>Donut Chart</h3> ");
-    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
-      'type': ("Doughnut"),
-      'data': ("pieData"),
-      'width': (200),
-      'height': (200),
-      'legend': (true)
-    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER",'legend': "BOOLEAN"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0,'legend': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
-    data.buffer.push("\n      </div>\n    </div>\n    <div class=\"small-12 medium-4 large-4 columns\">\n      <div class=\"feature-box\">\n        <h3>Line Chart</h3> ");
-    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
-      'type': ("Line"),
-      'data': ("lineData"),
-      'width': (600),
-      'height': (200)
-    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
-    data.buffer.push("\n      </div>\n    </div>\n    <row>\n      <div class=\"small-12 medium-4 large-4 columns\">\n        <div class=\"feature-box\">\n          <h3>Line Chart Update</h3> ");
-    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
-      'type': ("Line"),
-      'data': ("lineData"),
-      'width': (600),
-      'height': (200)
-    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
-    data.buffer.push("\n          <ul>\n            <li>");
-    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-      'value': ("lineValue1"),
-      'type': ("number")
-    },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-    data.buffer.push("</li>\n            <li>");
-    data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-      'value': ("lineValue2"),
-      'type': ("number")
-    },hashTypes:{'value': "ID",'type': "STRING"},hashContexts:{'value': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-    data.buffer.push("</li>\n          </ul>\n        </div>\n      </div>\n      <div class=\"small-12 medium-4 large-4 columns\">\n        <div class=\"feature-box\">\n          <h3>Bar Chart</h3> ");
-    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
-      'type': ("Bar"),
-      'data': ("barData"),
-      'width': (600),
-      'height': (200)
-    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
-    data.buffer.push("\n        </div>\n      </div>\n      <div class=\"small-12 medium-4 large-4 columns\">\n        <div class=\"feature-box\">\n          <h3>Radar Chart</h3> ");
-    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
-      'type': ("radar"),
-      'data': ("radarData"),
-      'width': (400),
-      'height': (400)
-    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
-    data.buffer.push("\n        </div>\n      </div>\n      <div class=\"small-12 medium-4 large-4 columns\">\n        <div class=\"feature-box\">\n          <h3>Polar Area Chart</h3> ");
-    data.buffer.push(escapeExpression((helper = helpers['ember-chart'] || (depth0 && depth0['ember-chart']),options={hash:{
-      'type': ("polar area"),
-      'data': ("radarData"),
-      'width': (400),
-      'height': (400)
-    },hashTypes:{'type': "STRING",'data': "ID",'width': "INTEGER",'height': "INTEGER"},hashContexts:{'type': depth0,'data': depth0,'width': depth0,'height': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ember-chart", options))));
-    data.buffer.push("\n        </div>\n      </div>\n  </div>\n</div>\n\n<footer class=\"section-bg-color2\">\n  <div class=\"row\">\n    <div class=\"small-12 medium-12 large-12 columns\">\n      <ul>\n        <li>&copy; 2015 Leslie Strauss.</li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n");
+    data.buffer.push("\n    </ul>\n  </div>\n  <div class=\"small-12 medium-6 large-6 columns\">\n    <ul>\n      ");
+    stack1 = helpers.each.call(depth0, {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[],types:[],data:data});
+    if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+    data.buffer.push("\n    </ul>\n  </div>\n</div>\n\n\n");
     return buffer;
     
   });
@@ -564,17 +500,17 @@ define('ember-cli-chartjs/tests/components/ember-chart.jshint', function () {
 
   module('JSHint - components');
   test('components/ember-chart.js should pass jshint', function() { 
-    ok(true, 'components/ember-chart.js should pass jshint.'); 
+    ok(false, 'components/ember-chart.js should pass jshint.\ncomponents/ember-chart.js: line 19, col 6, Unnecessary semicolon.\ncomponents/ember-chart.js: line 27, col 6, Unnecessary semicolon.\ncomponents/ember-chart.js: line 51, col 59, Missing semicolon.\ncomponents/ember-chart.js: line 52, col 6, Unnecessary semicolon.\ncomponents/ember-chart.js: line 54, col 47, Missing semicolon.\ncomponents/ember-chart.js: line 55, col 6, Unnecessary semicolon.\ncomponents/ember-chart.js: line 82, col 43, Missing semicolon.\ncomponents/ember-chart.js: line 83, col 39, Expected \'!==\' and instead saw \'!=\'.\n\n8 errors'); 
   });
 
 });
-define('ember-cli-chartjs/tests/controllers/charts.jshint', function () {
+define('ember-cli-chartjs/tests/controllers/application.jshint', function () {
 
   'use strict';
 
   module('JSHint - controllers');
-  test('controllers/charts.js should pass jshint', function() { 
-    ok(true, 'controllers/charts.js should pass jshint.'); 
+  test('controllers/application.js should pass jshint', function() { 
+    ok(true, 'controllers/application.js should pass jshint.'); 
   });
 
 });
@@ -742,6 +678,114 @@ define('ember-cli-chartjs/tests/unit/controllers/person-test.jshint', function (
   });
 
 });
+define('ember-cli-chartjs/tests/views/ember-chart.jshint', function () {
+
+  'use strict';
+
+  module('JSHint - views');
+  test('views/ember-chart.js should pass jshint', function() { 
+    ok(false, 'views/ember-chart.js should pass jshint.\nviews/ember-chart.js: line 19, col 6, Unnecessary semicolon.\nviews/ember-chart.js: line 27, col 6, Unnecessary semicolon.\nviews/ember-chart.js: line 50, col 77, Missing semicolon.\nviews/ember-chart.js: line 50, col 78, Unnecessary semicolon.\nviews/ember-chart.js: line 51, col 71, Missing semicolon.\nviews/ember-chart.js: line 51, col 72, Unnecessary semicolon.\nviews/ember-chart.js: line 78, col 43, Missing semicolon.\nviews/ember-chart.js: line 79, col 39, Expected \'!==\' and instead saw \'!=\'.\n\n8 errors'); 
+  });
+
+});
+define('ember-cli-chartjs/views/ember-chart', ['exports', 'ember'], function (exports, Ember) {
+
+  'use strict';
+
+  exports['default'] = Ember['default'].Component.extend({
+    tagName: "canvas",
+    attributeBindings: ["width", "height"],
+
+    renderChart: (function () {
+      var context = this.get("element").getContext("2d");
+      var data = this.get("data");
+      var type = this.get("type").classify();
+      var options = Ember['default'].merge({}, this.get("options"));
+
+      var chart = new Chart(context)[type](data, options);
+
+      if (this.get("legend")) {
+        var legend = chart.generateLegend();
+        this.$().parent().append(legend);
+      };
+
+      this.set("chart", chart);
+    }).on("didInsertElement"),
+
+    destroyChart: (function () {
+      if (this.get("legend")) {
+        this.$().parent().children("[class$=legend]").remove();
+      };
+
+      this.get("chart").destroy();
+    }).on("willDestroyElement"),
+
+    updateChart: (function () {
+      try {
+        var chart = this.get("chart");
+        var data = this.get("data");
+        var needUpdate = this.updateChartBasedOnType(data, chart);
+
+        if (needUpdate) {
+          chart.update();
+        }
+      } catch (error) {
+        Ember['default'].warn("Dataset is not equal in structure as previous values. Rebuilding chart...");
+        console.error(error);
+        this.destroyChart();
+        this.renderChart();
+      }
+    }).observes("data", "data.[]", "options"),
+
+    updateChartBasedOnType: function (data, chart) {
+      if (data.datasets) {
+        return this.updateLinearCharts(data.datasets, chart);
+      };
+      if (Array.isArray(data)) {
+        return this.updatePieCharts(data, chart);
+      };
+    },
+
+    updateLinearCharts: function (datasets, chart) {
+      datasets.forEach(function (dataset, i) {
+        dataset.data.forEach(function (item, j) {
+          item = item || 0;
+          if (typeof chart.datasets[i] === "undefined") {
+            chart.segments[j].value = item;
+          } else {
+            var dataSet = chart.datasets[i];
+
+            if (typeof dataSet.bars !== "undefined") {
+              chart.datasets[i].bars[j].value = item;
+            } else {
+              chart.datasets[i].points[j].value = item;
+            }
+          }
+        });
+      });
+      return true;
+    },
+
+    updatePieCharts: function (data, chart) {
+      var needUpdate = false;
+      data.forEach(function (segment, i) {
+        if (typeof chart.segments[i] !== "undefined") {
+          segment.value = segment.value || 0;
+          if (chart.segments[i].value != segment.value) {
+            chart.segments[i].value = segment.value;
+            needUpdate = true;
+          }
+        } else {
+          // there are now more segments than the chart knows about; add them
+          chart.addData(segment, i, true);
+          needUpdate = true;
+        }
+      });
+      return needUpdate;
+    }
+  });
+
+});
 /* jshint ignore:start */
 
 /* jshint ignore:end */
@@ -770,7 +814,7 @@ catch(err) {
 if (runningTests) {
   require("ember-cli-chartjs/tests/test-helper");
 } else {
-  require("ember-cli-chartjs/app")["default"].create({"LOG_ACTIVE_GENERATION":true,"LOG_VIEW_LOOKUPS":true,"name":"ember-cli-chartjs","version":"0.0.0.b60fb292"});
+  require("ember-cli-chartjs/app")["default"].create({"LOG_ACTIVE_GENERATION":true,"LOG_VIEW_LOOKUPS":true,"name":"ember-cli-chartjs","version":"0.0.0.1ff61d5d"});
 }
 
 /* jshint ignore:end */
