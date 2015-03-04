@@ -26,7 +26,7 @@ export default Ember.Controller.extend({
   lineValue2: 59,
   lineData: function() {
     return {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      labels: ["Soccer", "Dancing", "Art", "Reading", "Sleeping", "Fargo", "Picnic"],
       datasets: [{
         label: "My First dataset",
         fillColor: "rgba(220,220,220,0.2)",
@@ -49,7 +49,7 @@ export default Ember.Controller.extend({
     };
   }.property('lineValue1', 'lineValue2'),
   barData: {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: ["Soccer", "Dancing", "Art", "Reading", "Sleeping", "Fargo", "Picnic"],
     datasets: [{
       label: "My First dataset",
       fillColor: "rgba(220,220,220,0.5)",
@@ -67,7 +67,7 @@ export default Ember.Controller.extend({
     }]
   },
   radarData: {
-    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+    labels: ["Soccer", "Dancing", "Art", "Reading", "Sleeping", "Fargo", "Picnic"],
     datasets: [{
       label: "My First dataset",
       fillColor: "rgba(220,220,220,0.2)",

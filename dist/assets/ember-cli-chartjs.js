@@ -154,7 +154,7 @@ define('ember-cli-chartjs/controllers/application', ['exports', 'ember'], functi
     lineValue2: 59,
     lineData: (function () {
       return {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: ["Soccer", "Dancing", "Art", "Reading", "Sleeping", "Fargo", "Picnic"],
         datasets: [{
           label: "My First dataset",
           fillColor: "rgba(220,220,220,0.2)",
@@ -177,7 +177,7 @@ define('ember-cli-chartjs/controllers/application', ['exports', 'ember'], functi
       };
     }).property("lineValue1", "lineValue2"),
     barData: {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      labels: ["Soccer", "Dancing", "Art", "Reading", "Sleeping", "Fargo", "Picnic"],
       datasets: [{
         label: "My First dataset",
         fillColor: "rgba(220,220,220,0.5)",
@@ -195,7 +195,7 @@ define('ember-cli-chartjs/controllers/application', ['exports', 'ember'], functi
       }]
     },
     radarData: {
-      labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+      labels: ["Soccer", "Dancing", "Art", "Reading", "Sleeping", "Fargo", "Picnic"],
       datasets: [{
         label: "My First dataset",
         fillColor: "rgba(220,220,220,0.2)",
@@ -735,7 +735,7 @@ catch(err) {
 if (runningTests) {
   require("ember-cli-chartjs/tests/test-helper");
 } else {
-  require("ember-cli-chartjs/app")["default"].create({"LOG_ACTIVE_GENERATION":true,"LOG_VIEW_LOOKUPS":true,"name":"ember-cli-chartjs","version":"0.0.0.9899e1b6"});
+  require("ember-cli-chartjs/app")["default"].create({"LOG_ACTIVE_GENERATION":true,"LOG_VIEW_LOOKUPS":true,"name":"ember-cli-chartjs","version":"0.0.0.c187243c"});
 }
 
 /* jshint ignore:end */
